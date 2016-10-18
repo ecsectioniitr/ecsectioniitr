@@ -1,14 +1,14 @@
-title: John Smith
-description: My Personal Blog
-author: John Smith
-logo: static/img/avatar.png
-github: https://github.com/ashutosh2k12
-about: Freelance developer
+title: Electronics Section
+description: Official Blog
+author: Electronics Section
+logo: /static/img/avatar.png
+github: https://github.com/ecsectioniitr/
+about: IIT Roorkee
 
 baseurl: ""
-url: "http://aboutashu.com/hcz-jekyll-blog"
+url: "http://electronicssection.ml"
 
-disqus_shortname: aboutashu
+disqus_shortname: ecsection
 google_analytics: UA-72862926-1
 
 share:
@@ -23,4 +23,4 @@ paginate: 20
 per_page: 20
 paginate_path: "/page:num/"
 markdown: kramdown
-gems: [jekyll-paginate, jekyll-gist]
+gems: [jekyll-paginate, jekyll-gist, jekyll-github-metadata]
