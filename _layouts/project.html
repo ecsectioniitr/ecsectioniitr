@@ -7,23 +7,20 @@ layout: default
     {{ content }}
 
     <div class="projects row">
-    <!--{% include project_tags.html %}
-    {% for i in site.data.projects %}-->
-    {% assign sorted_repos = (site.github.public_repositories | sort: 'stargazers_count') | reverse %}
-    {% for repo in sorted_repos %}
-    {% assign descsize = repo.description.size %}
-    {% if descsize > 5 %}
+    {% include project_tags.html %}
+    {% assign repos = (site.github.public_repositories )  %}
+    {% for i in (repos | jsonify | downcase) %}
     <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='{{ i.tags | jsonify | downcase }}'>
     	<div class="well project-outer">
     		<div class="project-inner">
     			<a href="/static/projects/{{ i.image }}" class="thickbox">
     			<div class="project-img bordered" style="background-image: url('/static/projects/{{ i.image }}');"></div>
                 </a>
-                {% if repo.html_url %} <a href="{{ repo.html_url }}"> {% endif %}
-    			<h3 class="project-headlines">{{ repo.name }}</h3>
-                <h4> {{repo.description}} </h4>
-    			{% if repo.html_url %} </a> {% endif %}
-    			<!--<div class="project-content">
+                {% if i.url %} <a href="{{ i.url }}"> {% endif %}
+    			<h3 class="project-headlines">{{ i.name }}</h3>
+                <h4> {{i.date}} </h4>
+    			{% if i.url %} </a> {% endif %}
+    			<div class="project-content">
     				<div class="tag-holder">
     				{% if i.tags %} 
     					{% for j in i.tags %}
@@ -32,20 +29,18 @@ layout: default
     				{% endif %}
     				</div>
     				
-    			</div>-->
+    			</div>
     			<div class="project-footer"> 
-    				{% if repo.html_url %} 
-    				<a href="{{ repo.html_url }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
+    				{% if i.url %} 
+    				<a href="{{ i.url }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
     				{% endif %}
-    				<span class="project-timeline">{{ repo.updated_at }}</span>
+    				<span class="project-timeline">{{ i.date }}</span>
     			</div>
     		</div>
     	</div>
     
     </div>
-    {% endif %}
-{% endfor %}
-    <!--{% endfor %}-->
+    {% endfor %}
     </div>
     
   </div>

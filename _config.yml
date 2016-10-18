@@ -2,11 +2,12 @@ title: Electronics Section
 description: Official Blog
 author: Electronics Section
 logo: /static/img/avatar.png
-github: https://github.com/ecsectioniitr/
+github_url: https://github.com/ecsectioniitr/
 about: IIT Roorkee
+repository: ecsectioniitr/ecsectioniitr.github.io
 
 baseurl: ""
-url: "http://electronicssection.ml"
+url: "http://ecsectioniitr.ml"
 
 disqus_shortname: ecsection
 google_analytics: UA-72862926-1

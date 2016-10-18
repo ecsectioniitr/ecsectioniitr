@@ -16,9 +16,9 @@
     "icon": "fa-desktop"
   },
   {
-    "text": "Resume",
-    "url": "#",
-    "icon": "fa-graduation-cap",
+    "text": "Blog",
+    "url": "/blog",
+    "icon": "fa-desktop",
     "layout": "post"
   },
   {
@@ -27,9 +27,9 @@
     "icon": "fa-github"
   },
   {
-    "text": "XML Feed",
+    "text": "Contact Us",
     "url": "/feed.xml",
     "icon": "fa-feed",
-    "target": _blank
+    "target": ""
   }
 ]
