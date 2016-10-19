@@ -25,6 +25,19 @@
 		"image": "placeholder.jpg",
 		"date": "Oct 2016",
 		"tags": ["Android","nodejs"]
+	},
+	{
+		"name": "Cool project 4",
+		"image": "placeholder.jpg",
+		"date": "Oct 2016",
+		"tags": ["Android","nodejs"]
+	},
+	{
+		"name": "Cool project 4",
+		"image": "placeholder.jpg",
+		"url": "#",
+		"date": "Oct 2016",
+		"tags": ["Android","nodejs"]
 	}
 
 ]

@@ -1,6 +1,10 @@
 ---
 layout: default
 ---
+{% comment %}
+If some projects are off-github repo of ElecSec, then just add that project's object in projects.json file in data.
+{% endcomment %}
+
 <article class="post">
 
   <div class="post-content">
@@ -8,36 +12,68 @@ layout: default
 
     <div class="projects row">
     {% include project_tags.html %}
-    {% assign repos = (site.github.public_repositories )  %}
-    {% for i in (repos | jsonify | downcase) %}
+    {% assign repos = (site.github.public_repositories | sort: 'stargazers_count') | reverse)  %}
+    {% for i in (repos | jsonify) %}
     <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='{{ i.tags | jsonify | downcase }}'>
     	<div class="well project-outer">
     		<div class="project-inner">
     			<a href="/static/projects/{{ i.image }}" class="thickbox">
-    			<div class="project-img bordered" style="background-image: url('/static/projects/{{ i.image }}');"></div>
+    			<div class="project-img bordered">{{ i.description }}</div>
                 </a>
-                {% if i.url %} <a href="{{ i.url }}"> {% endif %}
+                {% if i.html_url %} <a href="{{ i.html_url }}"> {% endif %}
     			<h3 class="project-headlines">{{ i.name }}</h3>
-                <h4> {{i.date}} </h4>
-    			{% if i.url %} </a> {% endif %}
+                <!--<h4> {{i.date}} </h4>-->
+    			{% if i.html_url %} </a> {% endif %}
     			<div class="project-content">
     				<div class="tag-holder">
-    				{% if i.tags %} 
-    					{% for j in i.tags %}
-    					<span class="label tags tag-filter" data-tag="{{ j | downcase }}">{{ j }}</span>
-    					{% endfor %}
-    				{% endif %}
+    				{% if i.language %} 
+                        {% for j in i.language %}
+                        <span class="label tags tag-filter" data-tag="{{ j | downcase }}">{{ j }}</span>
+                        {% endfor %}
+                    {% endif %}
+                    <span class="label tags tag-filter" data-tag="{{ i.stargazers_count }}">Star Gazer: {{ i.stargazers_count | downcase }}</span>
     				</div>
-    				
     			</div>
     			<div class="project-footer"> 
-    				{% if i.url %} 
-    				<a href="{{ i.url }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
+    				{% if i.html_url %} 
+    				<a href="{{ i.html_url }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
     				{% endif %}
-    				<span class="project-timeline">{{ i.date }}</span>
+    				<span class="project-timeline">{{ i.created_at | date: '%B %Y' }}</span>
     			</div>
     		</div>
     	</div>
+    
+    </div>
+    {% endfor %}
+    {% for i in site.data.projects %}
+    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='{{ i.tags | jsonify | downcase }}'>
+        <div class="well project-outer">
+            <div class="project-inner">
+                <a href="/static/projects/{{ i.image }}" class="thickbox">
+                <div class="project-img bordered" style="background-image: url('/static/projects/{{ i.image }}');"></div>
+                </a>
+                {% if i.url %} <a href="{{ i.url }}"> {% endif %}
+                <h3 class="project-headlines">{{ i.name }}</h3>
+                <!--<h4> {{i.date}} </h4>-->
+                {% if i.url %} </a> {% endif %}
+                <div class="project-content">
+                    <div class="tag-holder">
+                    {% if i.tags %} 
+                        {% for j in i.tags %}
+                        <span class="label tags tag-filter" data-tag="{{ j | downcase }}">{{ j }}</span>
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                    
+                </div>
+                <div class="project-footer"> 
+                    {% if i.url %} 
+                    <a href="{{ i.url }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
+                    {% endif %}
+                    <span class="project-timeline">{{ i.date }}</span>
+                </div>
+            </div>
+        </div>
     
     </div>
     {% endfor %}
